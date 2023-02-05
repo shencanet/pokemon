@@ -1,9 +1,12 @@
 import React from "react";
+import './sass/Button.scss'
 
-const Button = () =>{
+const Button = (props) => {
     return (
-        <div>Button</div>
-    )
-}
+        <div className="button__box">
+            <button className="button">{props.text}</button>
+    
+        </div>
+    )}
 
-export default {Button}
+export  {Button}
