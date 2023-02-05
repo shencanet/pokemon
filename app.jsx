@@ -1,5 +1,7 @@
+import Button from "./src/components/Button"
+
 const App = ()=>{
-    return(<h1>Hola desde COMPONENTE APP</h1>)
+    return(<Btn />)
 }
 
 export {App}
