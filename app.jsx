@@ -7,8 +7,8 @@ const App = ()=>{
     return(
         <>
         <div className="buttons-container">
-            <Button text= {<TiArrowLeftOutline />}/>
-            <Button text= {<TiArrowRightOutline />}/>
+            <Button icon= {<TiArrowLeftOutline />}/>
+            <Button icon= {<TiArrowRightOutline />}/>
             
         </div>
             
