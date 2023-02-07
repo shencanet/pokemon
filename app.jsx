@@ -1,29 +1,42 @@
+//componentes 
 import { Button } from "./src/components/Button";
+import { Card } from "./src/components/Card";
+//estilos
 import "./src/components/sass/App.scss";
+//iconos
 import { TiArrowLeftOutline } from "react-icons/ti";
 import { TiArrowRightOutline } from "react-icons/ti";
+//Hooks
 import { useState } from "react";
+
 
 const App = () => {
   const  [pokemonId, setPokemonId] = useState(1);
+  function prevClick(){
+    (pokemonId === 1)?
+      setPokemonId(1):
+      setPokemonId(pokemonId -1 )
 
+  }
+  function nextClick(){
+      setPokemonId(pokemonId + 1)
+  }
 
   return (
     <>
+    <div className="card-container">
+        <Card />
+
+    </div>
+    
       <div className="buttons-container">
            <Button icon={<TiArrowLeftOutline />} 
-           handleClick={()=>{
-            (pokemonId === 1)?
-              setPokemonId(1):
-              setPokemonId(pokemonId -1 )
-            
-          }
-        }
+           handleClick={prevClick}
          />
            {pokemonId}
 
         <Button icon={<TiArrowRightOutline />} 
-        handleClick={()=>{setPokemonId(pokemonId+1)}}/>
+        handleClick={nextClick}/>
       </div>
     </>
   );
