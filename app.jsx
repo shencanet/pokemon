@@ -6,14 +6,24 @@ import { useState } from "react";
 
 const App = () => {
   const  [pokemonId, setPokemonId] = useState(1);
+
+
   return (
     <>
       <div className="buttons-container">
            <Button icon={<TiArrowLeftOutline />} 
-           handleClick={()=>{console.log('anterior')}}/>
+           handleClick={()=>{
+            (pokemonId === 1)?
+              setPokemonId(1):
+              setPokemonId(pokemonId -1 )
+            
+          }
+        }
+         />
+           {pokemonId}
 
         <Button icon={<TiArrowRightOutline />} 
-        handleClick={()=>{console.log('siguiente')}}/>
+        handleClick={()=>{setPokemonId(pokemonId+1)}}/>
       </div>
     </>
   );
