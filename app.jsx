@@ -7,11 +7,22 @@ import "./src/components/sass/App.scss";
 import { TiArrowLeftOutline } from "react-icons/ti";
 import { TiArrowRightOutline } from "react-icons/ti";
 //Hooks
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
 
 
 const App = () => {
   const  [pokemonId, setPokemonId] = useState(1);
+
+  useEffect(()=>{
+    getEvolutions(pokemonId);
+  })
+    
+
+   async function getEvolutions(id){
+      
+  }
+  
   function prevClick(){
     (pokemonId === 1)?
       setPokemonId(1):
