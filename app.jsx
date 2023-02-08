@@ -26,14 +26,25 @@ const App = () => {
    async function getEvolutions(id){
       const response =await fetch(`https://pokeapi.co/api/v2/evolution-chain/${id}/`)
       const data = await response.json()
-      let pokemonLv1 = data.chain.species.name;
+      let pokemonLv1 =  data.chain.species.name;
+      let pokemonLv1Img = await  getpokemonImg(pokemonLv1)
+      let pokemonEvoArray = [];
+      pokemonEvoArray.push([pokemonLv1, pokemonLv1Img])
+      if (data.chain.evolves_to.length !== 0){
+        let pokemonLv2 = data.chain.evolves_to[0].species.name;
+        let pokemonLv2Img = await getpokemonImg(pokemonLv2);
+        pokemonEvoArray.push([pokemonLv2, pokemonLv2Img])
+        console.log(pokemonEvoArray)
+      }
 
       //console.log(data.chain.species.name)
       //setPokemonName(data.chain.species.name)
     }
   
-    async function geypokemonNames(name){
+    async function getpokemonImg(name){
       const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}/`)
+      const data = await response.json();
+      return data.sprites.other['official-artwork'].front_default
     }
   function prevClick(){
     (pokemonId === 1)?
@@ -56,7 +67,7 @@ const App = () => {
            <Button icon={<TiArrowLeftOutline />} 
            handleClick={prevClick}
          />
-           {pokemonName}
+           {}
 
         <Button icon={<TiArrowRightOutline />} 
         handleClick={nextClick}/>
