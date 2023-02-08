@@ -13,7 +13,8 @@ import { useState, useEffect } from "react";
 
 const App = () => {
   const  [pokemonId, setPokemonId] = useState(1);
-  const [pokemonName, setPokemonName] = useState('');
+  //const [pokemonName, setPokemonName] = useState('');
+
 
   useEffect(()=>{
     getEvolutions(pokemonId);
@@ -21,19 +22,19 @@ const App = () => {
   }, [pokemonId])
     
 
+
    async function getEvolutions(id){
       const response =await fetch(`https://pokeapi.co/api/v2/evolution-chain/${id}/`)
       const data = await response.json()
-      console.log(data.chain.species.name)
-      setPokemonName(data.chain.species.name)
-    
-    
-    
-    
-    
-    
+      let pokemonLv1 = data.chain.species.name;
+
+      //console.log(data.chain.species.name)
+      //setPokemonName(data.chain.species.name)
     }
   
+    async function geypokemonNames(name){
+      const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}/`)
+    }
   function prevClick(){
     (pokemonId === 1)?
       setPokemonId(1):
