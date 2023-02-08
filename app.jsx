@@ -13,15 +13,26 @@ import { useState, useEffect } from "react";
 
 const App = () => {
   const  [pokemonId, setPokemonId] = useState(1);
+  const [pokemonName, setPokemonName] = useState('');
 
   useEffect(()=>{
     getEvolutions(pokemonId);
-  })
+    console.log('se esta ejecutando use Effect')
+  }, [pokemonId])
     
 
    async function getEvolutions(id){
-      
-  }
+      const response =await fetch(`https://pokeapi.co/api/v2/evolution-chain/${id}/`)
+      const data = await response.json()
+      console.log(data.chain.species.name)
+      setPokemonName(data.chain.species.name)
+    
+    
+    
+    
+    
+    
+    }
   
   function prevClick(){
     (pokemonId === 1)?
@@ -36,7 +47,7 @@ const App = () => {
   return (
     <>
     <div className="card-container">
-        <Card />
+        <Card  />
 
     </div>
     
@@ -44,7 +55,7 @@ const App = () => {
            <Button icon={<TiArrowLeftOutline />} 
            handleClick={prevClick}
          />
-           {pokemonId}
+           {pokemonName}
 
         <Button icon={<TiArrowRightOutline />} 
         handleClick={nextClick}/>
