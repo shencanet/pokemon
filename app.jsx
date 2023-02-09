@@ -70,7 +70,7 @@ const [pokemonEvolutions, setPokemonEvolutionst] = useState([])
 
   return (
     <div className="app">
-    <div className="card-container">
+    <div className={`card-container card${pokemonEvolutions.length}`}>
       {pokemonEvolutions.map(pokemon => 
       <Card 
       key = {pokemon[0]}
