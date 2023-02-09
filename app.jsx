@@ -38,13 +38,14 @@ const [pokemonEvolutions, setPokemonEvolutionst] = useState([])
         let pokemonLv2Img = await getpokemonImg(pokemonLv2);
         pokemonEvoArray.push([pokemonLv2, pokemonLv2Img])
         //console.log(pokemonEvoArray)
-      }
+      
       if (data.chain.evolves_to[0].evolves_to.length !== 0){
         let pokemonLv3 = data.chain.evolves_to[0].evolves_to[0].species.name;
         let pokemonLv3Img = await getpokemonImg(pokemonLv3);
         pokemonEvoArray.push([pokemonLv3, pokemonLv3Img])
-        setPokemonEvolutionst(pokemonEvoArray)
-      }
+        
+      }}
+      setPokemonEvolutionst(pokemonEvoArray)
 
       
 
@@ -68,12 +69,13 @@ const [pokemonEvolutions, setPokemonEvolutionst] = useState([])
   }
 
   return (
-    <>
+    <div className="app">
     <div className="card-container">
       {pokemonEvolutions.map(pokemon => 
       <Card 
+      key = {pokemon[0]}
       name = {pokemon[0]}
-      img = {pokemon[0]}
+      img = {pokemon[1]}
       
       /> )}
         
@@ -89,7 +91,7 @@ const [pokemonEvolutions, setPokemonEvolutionst] = useState([])
         <Button icon={<TiArrowRightOutline />} 
         handleClick={nextClick}/>
       </div>
-    </>
+    </div>
   );
 };
 
