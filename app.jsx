@@ -70,7 +70,12 @@ const [pokemonEvolutions, setPokemonEvolutionst] = useState([])
   return (
     <>
     <div className="card-container">
-      {pokemonEvolutions.map(pokemon => <Card  /> )}
+      {pokemonEvolutions.map(pokemon => 
+      <Card 
+      name = {pokemon[0]}
+      img = {pokemon[0]}
+      
+      /> )}
         
 
     </div>
